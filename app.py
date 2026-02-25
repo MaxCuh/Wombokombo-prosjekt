@@ -61,11 +61,10 @@ def logout():
 if __name__ == '__main__':
     app.run(debug=True)
 
-@app.route('/admin')
+@app.rou('/admin')
 def admin():
     if 'username' not in session:
         return redirect(url_for('login'))
     if session['role'] != 'admin':
         return 'Ingen tilgang', 403
     return render_template('admin.html')
-    
