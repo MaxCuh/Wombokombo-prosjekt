@@ -61,7 +61,7 @@ def logout():
 if __name__ == '__main__':
     app.run(debug=True)
 
-@app.rou('/admin')
+@app.route('/admin')
 def admin():
     if 'username' not in session:
         return redirect(url_for('login'))
