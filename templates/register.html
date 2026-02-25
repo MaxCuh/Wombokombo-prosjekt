@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registrer deg</title>
+</head>
+<body>
+    <h1>Registrer deg</h1>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <form method="POST">
+        <input type="text" name="username" placeholder="Brukernavn"><br><br>
+        <input type="password" name="password" placeholder="Passord"><br><br>
+        <button type="submit">Registrer</button>
+    </form>
+    <p>Har du allerede konto? <a href="/login">Logg inn</a></p>
+</body>
+</html>

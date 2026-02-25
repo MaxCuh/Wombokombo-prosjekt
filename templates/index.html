@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Full stack med autentisering</h1>
+    <a href="/login">Login</a>
+    <br>
+    <br>
+    {% if session['role'] == 'admin' %}
+    <a href="/admin">Admin-side</a>
+    {% endif %}
+</body>
+</html>
