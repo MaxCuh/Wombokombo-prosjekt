@@ -2,14 +2,36 @@
 <html>
 <head>
     <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    document.body.style.opacity = 0;
+    document.body.style.transition = "opacity 0.8s ease";
+    setTimeout(() => {
+        document.body.style.opacity = 1;
+    }, 10);
+});
+
+document.querySelectorAll("a, button[type='submit']").forEach(el => {
+    el.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.body.style.opacity = 0;
+        setTimeout(() => {
+            window.location = this.href || this.closest("form").action || window.location.href;
+        }, 800);
+    });
+});
+    </script>
 </head>
 <body>
-    <h1>Full stack med autentisering</h1>
-    <a href="/login">Login</a>
-    <br>
-    <br>
-    {% if session['role'] == 'admin' %}
-    <a href="/admin">Admin-side</a>
-    {% endif %}
+    <div class="container"> 
+        <h1>Full stack med autentisering</h1>
+        <a href="/login">Login</a>
+        <br>
+        <br>
+        {% if session['role'] == 'admin' %}
+        <a href="/admin">Admin-side</a>
+        {% endif %}
+    </div>
 </body>
 </html>

@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin</title>
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    document.body.style.opacity = 0;
+    document.body.style.transition = "opacity 0.8s ease";
+    setTimeout(() => {
+        document.body.style.opacity = 1;
+    }, 10);
+});
+
+document.querySelectorAll("a, button[type='submit']").forEach(el => {
+    el.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.body.style.opacity = 0;
+        setTimeout(() => {
+            window.location = this.href || this.closest("form").action || window.location.href;
+        }, 800);
+    });
+});
+    </script>
 </head>
 <body>
-    <h1>Admin-side</h1>
-    <p>Velkommen, {{ session['username'] }}! Du har admin-tilgang.</p>
-    <a href="/logout">Logg ut</a>
+    <div class="container"> 
+        <h1>Admin-side</h1>
+        <p>Velkommen, {{ session['username'] }}! Du har admin-tilgang.</p>
+        <a href="/logout">Logg ut</a>
+    </div>
 </body>
 </html>

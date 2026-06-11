@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    document.body.style.opacity = 0;
+    document.body.style.transition = "opacity 0.8s ease";
+    setTimeout(() => {
+        document.body.style.opacity = 1;
+    }, 10);
+});
+
+document.querySelectorAll("a, button[type='submit']").forEach(el => {
+    el.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.body.style.opacity = 0;
+        setTimeout(() => {
+            window.location = this.href || this.closest("form").action || window.location.href;
+        }, 800);
+    });
+});
+    </script>
 </head>
 <body>
-    <h1>Login</h1>
-    {% if error %}
-        <p style="color:red;">{{ error }}</p>
-    {% endif %}
-    <form method="POST">
-        <input type="text" name="username" placeholder="Brukernavn"><br><br>
-        <input type="password" name="password" placeholder="Passord"><br><br>
-        <button type="submit">Logg inn</button>
-    </form>
-    <p>Har du ikke konto? <a href="/register">Registrer deg</a></p>
+    <div class="container"> 
+        <h1>Login</h1>
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% endif %}
+        <form method="POST">
+            <input type="text" name="login_input" placeholder="Brukernavn eller epost" required><br><br>
+            <input type="password" name="password" placeholder="Passord" required><br><br>
+            <button type="submit">Logg inn</button>
+        </form>
+        <p>Har du ikke konto? <a href="/register">Registrer deg</a></p>
+    </div>
 </body>
 </html>
