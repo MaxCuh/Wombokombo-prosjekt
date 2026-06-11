@@ -10,14 +10,9 @@ jobs:
       - name: Installer Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.14.0'
+          python-version: '3.11'
       - name: Installer pakker
-        run: |
-          cd wombokombo
-          pip install flask pymysql pytest werkzeug
+        run: pip install flask pymysql pytest werkzeug
       - name: Kjør tester
-        run: |
-          cd wombokombo
-          pytest test_app.py
-
-    
+        run: pytest test_app.py
+        
